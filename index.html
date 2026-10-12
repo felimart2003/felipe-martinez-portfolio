@@ -1,9 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f4ed" />
+    <meta name="theme-color" content="#121611" />
+    <script>
+      (() => {
+        let theme = 'dark';
+        try { if (localStorage.getItem('portfolio-theme') === 'light') theme = 'light'; } catch {}
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#121611' : '#f5f4ed';
+      })();
+    </script>
     <meta name="description" content="Felipe Martinez — Computer Science student at Carleton University. Explore projects in AI agents, computer vision, cybersecurity, and software automation." />
     <meta property="og:title" content="Felipe Martinez — Ideas into impact" />
     <meta property="og:description" content="Computer science, curious thinking, and software that does something useful. Explore Felipe's selected projects and experience." />
@@ -19,13 +28,19 @@
     <div class="scroll-progress" aria-hidden="true"></div>
     <header class="site-header">
       <a class="wordmark" href="#home" aria-label="Felipe Martinez, home">f<span class="wordmark-dot">.</span>m<span class="wordmark-star" aria-hidden="true">✳</span></a>
-      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation"><span></span><span></span></button>
       <nav class="main-nav" id="main-nav" aria-label="Main navigation">
         <a href="#work">Selected work <span>01</span></a>
         <a href="#about">About <span>02</span></a>
         <a href="#experience">Experience <span>03</span></a>
         <a class="nav-contact" href="#contact">Let’s talk <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
       </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false" title="Switch to light mode">
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5a8.5 8.5 0 1 0 9.5 9.5Z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation"><span></span><span></span></button>
+      </div>
     </header>
     <main id="main">
       <section class="hero section-shell" id="home" aria-labelledby="hero-title">
@@ -113,6 +128,9 @@
     </main>
     <footer class="site-footer section-shell"><a class="wordmark" href="#home" aria-label="Back to top">f<span class="wordmark-dot">.</span>m<span class="wordmark-star" aria-hidden="true">✳</span></a><p>© <span id="year">2026</span> Felipe Martinez</p><a href="#home">BACK TO TOP ↑</a></footer>
     <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title"><button class="dialog-close" id="dialog-close" aria-label="Close project details">×</button><div id="dialog-content"></div></dialog>
+    <button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></button>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

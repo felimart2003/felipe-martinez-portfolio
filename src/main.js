@@ -1,4 +1,5 @@
 import './style.css';
+import './enhancements.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
